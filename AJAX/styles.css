@@ -1,0 +1,23 @@
+body{
+    width:100%;
+    background-color: #66bdff;
+}
+
+h1{
+    text-align: center;
+    margin: auto;
+    padding: 50px;
+    font-size: 30px;
+}
+.info{
+    border: 2px solid #000000;
+    padding: 90px;
+    margin: 60px;
+}
+
+.main{
+    background-color: cornflowerblue;
+    margin: 20px;
+    padding: 30px;
+    border: 2px solid #000000;
+}
