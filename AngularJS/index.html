@@ -1,0 +1,269 @@
+<!--
+Statement:-
+
+*   Design and Develop Library Information CRUD App using AngularJS.
+*   Following fields should be used to display data in tabular format:-
+
+        Username, Password, Firstname, Lastname, Class, Department,
+        Books Issued, Issue Date
+Author : Soumitra Edake
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Library Information CRUD App using AngularJS</title>
+		<script src="libs/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+		<script src="libs/jquery.dataTables.min.js"></script>
+		<script src="libs/angular-datatables.min.js"></script>
+		<script src="libs/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="libs/bootstrap.min.css">
+		<link rel="stylesheet" href="libs/datatables.bootstrap.css">
+	</head>
+	<body ng-app="crudApp" ng-controller="crudController" style="background-color: #cde4f1">
+		<div class="container" ng-init="fetchData()">
+			<br />
+			<h2 align="center"><b>Library Information CRUD App</b></h2>
+				<h4 align="center">(using AngularJS)</h4>
+			<br />
+			<div class="alert alert-success alert-dismissible" ng-show="success" >
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				{{successMessage}}
+			</div>
+			<div align="right">
+				<button style="color: white;background-color: #0a7e00" type="button" name="add_button" ng-click="addData()" class="btn btn-success">Add</button>
+			</div>
+			<br />
+			<div class="table-responsive" style="overflow-x: unset;" >
+				<table datatable="ng" dt-options="vm.dtOptions" class="table table-bordered table-striped" style="padding-top:100px; border: 4px solid #000000;">
+					<thead style="white-space:nowrap;background-color:#cde4f1;">
+						<tr >
+							<th style="border:2px solid black;border-bottom-width: 3px;">ID</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Username</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Password</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">First Name</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Last Name</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Gender</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Email</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Mobile</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Class</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Department</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Books Issued</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Issue Date</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Edit</th>
+							<th style="border:2px solid black;border-bottom-width: 3px;">Delete</th>
+						</tr>
+					</thead>
+					<tbody style="border:2px solid black;background-color:#cde4f1;">
+						<tr ng-repeat="name in TotalData">
+							<td style="border:2px solid black;">{{name.id}}</td>
+							<td style="border:2px solid black;">{{name.username}}</td>
+							<td style="border:2px solid black;">{{name.password}}</td>
+							<td style="border:2px solid black;">{{name.firstname}}</td>
+							<td style="border:2px solid black;">{{name.lastname}}</td>
+							<td style="border:2px solid black;">{{name.gender}}</td>
+							<td style="border:2px solid black;">{{name.email}}</td>
+							<td style="border:2px solid black;">{{name.mobile}}</td>
+							<td style="border:2px solid black;">{{name.class}}</td>
+							<td style="border:2px solid black;">{{name.department}}</td>
+							<td style="border:2px solid black;">{{name.books_issued}}</td>
+							<td style="border:2px solid black;">{{name.issue_date}}</td>
+							<td style="border:2px solid black;"><button type="button" ng-click="fetchSingleData(name.id)" class="btn btn-warning btn-xs">Edit</button></td>
+							<td style="border:2px solid black;"><button type="button" ng-click="deleteData(name.id)" class="btn btn-danger btn-xs">Delete</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="crudmodal">
+	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+    		<form method="post" ng-submit="submitForm()">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title">{{modalTitle}}</h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			<div class="alert alert-danger alert-dismissible" ng-show="error" >
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						{{errorMessage}}
+					</div>
+					
+					<div class="form-group">
+						<label>Enter Username
+							<input type="text" name="username" ng-model="username" class="form-control" />
+						</label>
+					</div>
+					
+					<div class="form-group">
+						<label>Enter Password
+							<input type="password" name="password" ng-model="password" class="form-control" />
+						</label>
+					</div>
+					
+					<div class="form-group">
+						<label>Enter First Name<input type="text" name="firstname" ng-model="firstname" class="form-control" />
+						</label>
+					</div>
+					
+					<div class="form-group">
+						<label>Enter Last Name
+							<input type="text" name="lastname" ng-model="lastname" class="form-control" />
+						</label>
+					</div>
+
+					<div class="form-group">
+						<label>Enter Gender
+							<input type="text" name="gender" ng-model="gender" class="form-control" />
+						</label>
+					</div>
+
+					<div class="form-group">
+						<label>Enter Email
+							<input type="email" name="email" ng-model="email" class="form-control" />
+						</label>
+					</div>
+
+					<div class="form-group">
+						<label>Enter Mobile Number
+							<input type="tel" name="mobile" ng-model="mobile" class="form-control" />
+						</label>
+					</div>
+
+					<div class="form-group">
+						<label>Enter Class
+							<input type="text" name="class" ng-model="class" class="form-control" />
+						</label>
+					</div>
+					
+					<div class="form-group">
+						<label>Enter Department
+							<input type="text" name="department" ng-model="department" class="form-control" />
+						</label>
+					</div>
+					
+					<div class="form-group">
+						<label>Enter Books Issued
+							<input type="text" name="books_issued" ng-model="books_issued" class="form-control" />
+						</label>
+					</div>
+					
+					<div class="form-group">
+						<label>Enter Issue Date
+							<input type="text" name="issue_date" ng-model="issue_date" class="form-control" />
+						</label>
+					</div>
+	      		</div>
+	      		<div class="modal-footer">
+					<label style="margin-top:10px;margin-left:150px;">Enter ID:</label>
+					<label>
+						<input type="text" name="id" ng-model="id" class="form-control" value="{{id}}"/>
+					</label>
+
+					<input type="submit" name="submit" id="submit" class="btn btn-info" value="{{submit_button}}" />
+	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        	</div>
+	        </form>
+    	</div>
+  	</div>
+</div>
+
+<script>
+	var app = angular.module('crudApp', ['datatables']);
+	app.controller('crudController', function($scope, $http){
+
+	$scope.success = false;
+	$scope.error = false;
+
+	$scope.fetchData = function(){
+		$http.get('fetch_data.php').success(function(data){
+			$scope.TotalData = data;
+		});
+	};
+
+	$scope.openModal = function(){
+		var modal_popup = angular.element('#crudmodal');
+		modal_popup.modal('show');
+	};
+
+	$scope.closeModal = function(){
+		var modal_popup = angular.element('#crudmodal');
+		modal_popup.modal('hide');
+	};
+
+	$scope.addData = function(){
+		$scope.modalTitle = 'Add New Entry:-';
+		$scope.submit_button = 'Insert';
+		$scope.openModal();
+	};
+
+	$scope.submitForm = function(){
+		$http({
+			method:"POST",
+			url:"insert.php",
+			data:{'username':$scope.username,'password':$scope.password,'firstname':$scope.firstname, 'lastname':$scope.lastname, 'gender':$scope.gender, 'email':$scope.email, 'mobile':$scope.mobile, 'class':$scope.class , 'department':$scope.department, 'books_issued':$scope.books_issued, 'issue_date':$scope.issue_date, 'action':$scope.submit_button, 'id':$scope.id}
+		}).success(function(data){
+			if(data.error !== '')
+			{
+				$scope.success = false;
+				$scope.error = true;
+				$scope.errorMessage = data.error;
+			}
+			else
+			{
+				$scope.success = true;
+				$scope.error = false;
+				$scope.successMessage = data.message;
+				$scope.form_data = {};
+				$scope.closeModal();
+				$scope.fetchData();
+			}
+		});
+	};
+
+	$scope.fetchSingleData = function(id){
+		$http({
+			method:"POST",
+			url:"insert.php",
+			data:{'id':id, 'action':'fetch_single_data'}
+		}).success(function(data){
+			$scope.username = data.username;
+			$scope.password = data.password;
+			$scope.firstname = data.firstname;
+			$scope.lastname = data.lastname;
+			$scope.gender = data.gender;
+			$scope.mail = data.email;
+			$scope.mobile = data.mobile;
+			$scope.class = data.class;
+			$scope.department = data.department;
+			$scope.books_issued = data.books_issued;
+			$scope.issue_date = data.issue_date;
+			$scope.id = data.id;
+			$scope.modalTitle = 'Edit Entry';
+			$scope.submit_button = 'Edit';
+			$scope.openModal();
+		});
+	};
+
+	$scope.deleteData = function(id){
+		if(confirm("Are you sure you want to delete this entry?"))
+		{
+			$http({
+				method:"POST",
+				url:"insert.php",
+				data:{'id':id, 'action':'Delete'}
+			}).success(function(data){
+				$scope.success = true;
+				$scope.error = false;
+				$scope.successMessage = data.message;
+				$scope.fetchData();
+			});	
+		}
+	};
+
+});
+
+</script>
