@@ -6,15 +6,17 @@
 <br>
 <br>
 
-<pre>*   Design and Develop an Library Registration and Login Form using Servlet, MySQL
-*   Following fields should be used:-
+<b>1. Servlet</b>
 
-        **Login Form:-**
+<pre>   Design and Develop an Library Registration and Login Form using Servlet, MySQL
+   Following fields should be used:-
+
+        <b>Login Form:-</b>
             Username, Password, Department(Drop down select), Check box
             for remembering the password, Sign In Button, Reset Button,
             Forgot Password Link, Hyperlink to Registration Page
 
-        **Registration Form:-**
+        <b>Registration Form:-</b>
             Username, Password, Firstname, Lastname, Gender(radio buttons),
             Email, Mobile, Class(Drop down select), Department(Drop down
             select), Age, Address(Text Area), Subjects(Check Boxes),
@@ -22,17 +24,17 @@
 
 </pre>
 
-**JSP:-**
+<b>2. JSP</b>
 
-<pre>*   Design and Develop an Library Registration and Login Form using JSP, MySQL.
-*   Following fields should be used:-
+<pre>   Design and Develop an Library Registration and Login Form using JSP, MySQL.
+   Following fields should be used:-
 
-        **Login Form:-**
+        <b>Login Form:-</b>
             Username, Password, Department(Drop down select), Check box
             for remembering the password, Sign In Button,
             Reset Button, Forgot Password Link, Hyperlink to Registration Page
 
-        **Registration Form:-**
+        <b>Registration Form:-</b>
             Username, Password, Firstname, Lastname, Gender(radio
             buttons), Email, Mobile, Class(Drop down select),
             Department(Drop down select), Age, Address(Text Area),
@@ -41,17 +43,17 @@
 
 </pre>
 
-**PHP:-**
+<b>3. PHP</b>
 
-<pre>*   Design and Develop an Library Registration and Login Form using PHP, MySQL.
-*   Following fields should be used:-
+<pre>   Design and Develop an Library Registration and Login Form using PHP, MySQL.
+   Following fields should be used:-
 
-        **Login Form:-**
+        <b>Login Form:-</b>
             Username, Password, Department(Drop down select), Check box
             for remembering the password, Sign In Button, Reset Button,
             Forgot Password Link, Hyperlink to Registration Page
 
-        **Registration Form:-**
+        <b>Registration Form:-</b>
             Username, Password, Firstname, Lastname, Gender(radio
             buttons), Email, Mobile, Class(Drop down select),
             Department(Drop down select), Age, Address(Text Area),
@@ -60,38 +62,38 @@
 
 </pre>
 
-**AJAX:-**
+<b>4. AJAX</b>
 
-<pre>*   Design and Develop Library Search System using AJAX, PHP, MySQL.
-*   Following fields should be used to display data in tabular format:-
+<pre>   Design and Develop Library Search System using AJAX, PHP, MySQL.
+   Following fields should be used to display data in tabular format:-
 
         Username, Firstname, Lastname, Gender, Email, Mobile, Class,
         Department, Books Issued, Issue Date
 
 </pre>
 
-**AngularJS:-**
+<b>5. AngularJS</b>
 
-<pre>*   Design and Develop Library Information CRUD App using AngularJS.
-*   Following fields should be used to display data in tabular format:-
+<pre>   Design and Develop Library Information CRUD App using AngularJS.
+   Following fields should be used to display data in tabular format:-
 
         Username, Password, Firstname, Lastname, Class, Department,
         Books Issued, Issue Date
 
 </pre>
 
-**Bootstrap:-**
+<b>6. Bootstrap</b>
 
-<pre>*   Design and Develop an Library Registration and Login Form using Bootstrap Framework.
-*   Following fields should be used:-
+<pre>   Design and Develop an Library Registration and Login Form using Bootstrap Framework.
+   Following fields should be used:-
 
-        **Login Form:-**
+        <b>Login Form:-</b>
             Username, Password, Department(Drop down select),
             Check box for remembering the password, Sign In Button,
             Reset Button, Forgot Password Link,
             Hyperlink to Registration Page
 
-        **Registration Form:-**
+        <b>Registration Form:-</b>
             Username, Password, Firstname, Lastname, Gender(radio buttons),
             Email, Mobile, Class(Drop down select),
             Department(Drop down select), Age, Address(Text Area),
